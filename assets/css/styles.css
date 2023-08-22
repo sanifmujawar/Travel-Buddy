@@ -480,16 +480,14 @@ img {
 }
 
 /*=============== JOIN ===============*/
-.join__container {
+#buddy-form {
   row-gap: 3rem;
   padding-bottom: 2.5rem;
-}
-
-.join__data {
   text-align: center;
 }
 
-.join__description {
+
+ .join__description {
   margin-bottom: 2rem;
 }
 
@@ -503,12 +501,12 @@ img {
   background-color: var(--container-color);
 }
 
-.join__button {
+#submit-button {
   cursor: pointer;
 }
 
-.join__image {
-  position: relative;
+#map-image {
+  /* position: relative; */
   justify-self: center;
   overflow: hidden;
 }
