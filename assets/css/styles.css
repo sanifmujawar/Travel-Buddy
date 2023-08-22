@@ -534,6 +534,9 @@ img {
 .currency__container {
   row-gap: 3rem;
   padding-bottom: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 300px; /* Reverse the order */
+  align-items: center; /* Vertically align items */
 }
 
 .currency__data {
