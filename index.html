@@ -230,72 +230,34 @@
          </section>
          
          <!--==================== JOIN ====================-->
-         <div id="buddy-form">
-            <h2 class="heading">
-              Hi! Please fill out the form below and let's create the perfect trip!
-            </h2>
-            <form id="travel-form">
-              <p>Name:</p>
-              <input type="text" id="name" />
-              <p>E-mail:</p>
-              <input type="text" id="email" />
-              <p>Your destination:</p>
-              <input type="text" id="destination" />
-              <p>What attractions are you interested in?:</p>
-              <select type="text" id="attractions">
-                <option class="attr-option" value="catering.cafe.coffee">
-                  Cafe
-                </option>
-                <option class="attr-option" value="catering.restaurant">
-                  Restaurant
-                </option>
-                <option class="attr-option" value="catering.bar">Bar/Pub</option>
-                <option class="attr-option" value="heritage">
-                  Historic Building
-                </option>
-                <option class="attr-option" value="entertainment.cinema">
-                  Cinema
-                </option>
-                <option class="attr-option" value="entertainment.museum">
-                  Museum
-                </option>
-                <option class="attr-option" value="entertainment.culture.gallery">
-                  Gallery
-                </option>
-                <option class="attr-option" value="entertainment.culture.theatre">
-                  Theatre
-                </option>
-                <option class="attr-option" value="entertainment.bowling_alley">
-                  Bowling
-                </option>
-                <option class="attr-option" value="sport.swimming_pool">
-                  Swimming
-                </option>
-                <option class="attr-option" value="leisure.park">Park</option>
-                <option class="attr-option" value="leisure.park.garden">
-                  Gardens/Woodlands
-                </option>
-                <option class="attr-option" value="commercial.supermarket">
-                  Supermarket
-                </option>
-                <option class="attr-option" value="healthcare.pharmacy">
-                  Pharmacy
-                </option>
-                <option class="attr-option" value="accommodation.hotel">
-                  Hotel
-                </option>
-                <option class="attr-option" value="building.parking">
-                  Car Park
-                </option>
-              </select>
-              <p>Please select the your travel dates:</p>
-              <input type="date" id="date-selector" />
-              <button id="submit-button">Submit</button>
-            </form>
-          </div>
-          <!--events output-->
-          <div id="output-container"></div>
-        </div>
+         <section class="join section">
+            <div class="join__container container grid">
+               <div class="join__data">
+                  <h2 class="section__title">
+                     Your Journey <br>
+                     Starts Here
+                  </h2>
+
+                  <p class="join__description">
+                     Get up to date with the latest 
+                     travel and information from us.
+                  </p>
+
+                  <form action="" class="join__form">
+                     <input type="email" placeholder="Enter your email" class="join__input">
+
+                     <button class="join__button button">
+                        Subscribe Our Newsletter <i class="ri-arrow-right-line"></i>
+                     </button>
+                  </form>
+               </div>
+
+               <div class="join__image">
+                  <img src="assets/img/join-island.jpg" alt="join image" class="join__img">
+                  <div class="join__shadow"></div>
+               </div>
+            </div>
+         </section>
 
          <!--==================== CURRENCY ====================-->
          <section class="currency section">
