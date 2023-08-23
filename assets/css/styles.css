@@ -495,7 +495,8 @@ img {
   text-align: center;
 }
 
-.join__description {
+
+ .join__description {
   margin-bottom: 2rem;
 }
 
@@ -511,12 +512,25 @@ img {
 
 #submit-button {
   cursor: pointer;
+  row-gap: 1rem;
 }
 
 #map-image {
   /* position: relative; */
   justify-self: center;
   overflow: hidden;
+  row-gap: 1rem;
+  
+}
+
+#output-container {
+ 
+  display: grid;
+  row-gap: 1rem;
+  }
+
+.result_button {
+
 }
 
 .join__img {
