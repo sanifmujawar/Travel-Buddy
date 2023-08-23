@@ -142,11 +142,6 @@ form.addEventListener("submit", function travelInfo(event) {
           results.innerHTML = "";
           for (let j = 0; j < data.features.length; j++) {
             var resultsName = data.features[j].properties.name;
-            // var resultsOpen =
-            //   data.features[j].properties.datasource.raw.opening_hours;
-
-            // var resultsPhone = data.features[j].properties.datasource.raw.phone;
-            // var resultsWeb = data.features[j].properties.datasource.raw.url;
 
             var newAddressDiv = document.createElement("button");
             newAddressDiv.classList.add("result-button", "button");
