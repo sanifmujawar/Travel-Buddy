@@ -299,6 +299,11 @@
                 placeholder="Enter your destination"
                 class="join__input"
               />
+              <input
+                type="email"
+                placeholder="Enter your email"
+                class="join__input"
+              />
               <p>What attractions are you interested in?:</p>
               <select type="text" class="join__input" id="attractions">
                 <option class="attr-option" value="catering.cafe.coffee">
@@ -373,7 +378,31 @@
             </div>
           </div>
 
-          <div id="stored-results"></div>
+          <div class="join__image">
+            <img
+              src="assets/img/join-island.jpg"
+              alt="join image"
+              class="join__img"
+            />
+            <div class="join__shadow"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="weather section" id="weather">
+        <div class="weather__container container grid">
+          <div class="weather__data">
+            <h2 class="section__title">Weather Forecast</h2>
+            <!-- Add weather information here -->
+          </div>
+          <div class="weather__video">
+            <video autoplay loop muted style="width: 100%">
+              <source src="./assets/img/weather.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <div class="weather__shadow"></div>
+          </div>
+          <div id="weatherForecastLocation" class="section__title"></div>
         </div>
       </section>
 
