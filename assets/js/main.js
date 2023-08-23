@@ -55,20 +55,18 @@ const sections = document.querySelectorAll("section[id]");
 const scrollActive = () => {
   const scrollY = window.pageYOffset;
 
-  sections.forEach((current) => {
-    const sectionHeight = current.offsetHeight,
-      sectionTop = current.offsetTop - 58,
-      sectionId = current.getAttribute("id"),
-      sectionsClass = document.querySelector(
-        ".nav__menu a[href*=" + sectionId + "]"
-      );
+  // sections.forEach(current => {
+  //     const sectionHeight = current.offsetHeight,
+  //         sectionTop = current.offsetTop - 58,
+  //         sectionId = current.getAttribute('id'),
+  //         sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
 
-    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-      sectionsClass.classList.add("active-link");
-    } else {
-      sectionsClass.classList.remove("active-link");
-    }
-  });
+  //     if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+  //         sectionsClass.classList.add('active-link')
+  //     } else {
+  //         sectionsClass.classList.remove('active-link')
+  //     }
+  // })
 };
 window.addEventListener("scroll", scrollActive);
 
@@ -83,8 +81,12 @@ const sr = ScrollReveal({
 
 sr.reveal(`.home__data, .explore__data, .explore__user, .footer__container`);
 sr.reveal(`.home__card`, { delay: 600, distance: "100px", interval: 100 });
-sr.reveal(`.about__data, .join__image, .currency__image`, { origin: "right" });
-sr.reveal(`.about__image, .join__data, .currency__data`, { origin: "left" });
+sr.reveal(`.about__data, .join__image, .currency__image, .weather__video`, {
+  origin: "right",
+});
+sr.reveal(`.about__image, .join__data, .currency__data, .weather__data`, {
+  origin: "left",
+});
 sr.reveal(`.popular__card`, { interval: 200 });
 
 var form = document.getElementById("buddy-form");
@@ -95,7 +97,7 @@ var emailInput = document.getElementById("email");
 var destinationInput = document.getElementById("destination");
 var attractionInput = document.getElementById("attractions");
 var dateInput = document.getElementById("date-selector");
-var storedResults = document.getElementById("stored-results");
+var dataOutput = document.getElementById("output-container");
 
 //event listener and function to store user input data
 form.addEventListener("submit", function travelInfo(event) {
@@ -106,12 +108,14 @@ form.addEventListener("submit", function travelInfo(event) {
   var searchDate = dateInput.value;
   var searchAttraction = attractionInput.value;
 
-  var resultDate = document.createTextNode(searchDate);
-  storedResults.appendChild(resultDate);
-
+  console.log(searchName, "searchName");
+  console.log(searchEmail);
+  console.log(searchDestination);
+  console.log(searchAttraction);
+  console.log(searchDate);
   //api url to get location ID and longtitude/latitude
   var tripLocation = `https://api.geoapify.com/v1/geocode/search?text=${searchDestination}&lang=en&limit=10&type=city&apiKey=e4ecef705ece4451a30f714a57fb5101`;
-
+  console.log(tripLocation);
   //fetch function
   fetch(tripLocation)
     .then(function (response) {
@@ -124,15 +128,21 @@ form.addEventListener("submit", function travelInfo(event) {
       //api to generate static map from data from previous api
       var locationMap = `https://maps.geoapify.com/v1/staticmap?style=osm-bright&width=800&height=600&format=jpeg&center=lonlat:${locationLon},${locationLat}&zoom=13.5&apiKey=e4ecef705ece4451a30f714a57fb5101`;
       //creating img element and appending to new div
+      console.log(locationMap);
       var imgDiv = document.createElement("div");
       var newMap = document.createElement("img");
       newMap.setAttribute("src", locationMap);
       newMap.setAttribute("id", "map-image");
+      const weatherForecastLocation = document.getElementById(
+        "weatherForecastLocation"
+      );
+      weatherForecastLocation.textContent = `Weather Forecast For, ${searchDestination} on ${searchDate} is!`;
 
-      results.appendChild(imgDiv);
+      dataOutput.appendChild(imgDiv);
       imgDiv.appendChild(newMap);
       //api to find data on requested venues/attractions
       var tripEvents = `https://api.geoapify.com/v2/places?categories=${searchAttraction}&filter=place:${locationID}&limit=30&apiKey=e4ecef705ece4451a30f714a57fb5101`;
+      console.log(tripEvents);
 
       fetch(tripEvents)
         .then(function (response) {
@@ -143,25 +153,18 @@ form.addEventListener("submit", function travelInfo(event) {
           for (let j = 0; j < data.features.length; j++) {
             var resultsName = data.features[j].properties.name;
 
-            var newAddressDiv = document.createElement("button");
-            newAddressDiv.classList.add("result-button", "button");
+            // var newDiv = document.createElement("div");
+            // newDiv.classList.add("result-div");
+            var newAddressButton = document.createElement("button");
+            newAddressButton.classList.add("result-button");
             var newTextAddress = document.createTextNode(resultsName);
-            results.appendChild(newAddressDiv);
-            newAddressDiv.appendChild(newTextAddress);
 
-            newAddressDiv.addEventListener("click", function storeInfo() {
-              var storedData = document.createElement("div");
-              storedData.classList.add("section");
-
-              var resultsOpen = data.features[j].properties.formatted;
-              var resultsPhone =
-                data.features[j].properties.datasource.raw.phone;
-              var newTextOpen = document.createTextNode(resultsOpen);
-              var newTextPhone = document.createTextNode(resultsPhone);
-              storedResults.appendChild(storedData);
-              storedData.appendChild(newTextOpen);
-            });
+            // dataOutput.appendChild(newDiv);
+            dataOutput.appendChild(newAddressButton);
+            newAddressButton.appendChild(newTextAddress);
           }
         });
     });
 });
+
+form.addEventListener("click", function clearInfo() {});
