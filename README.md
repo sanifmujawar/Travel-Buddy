@@ -9,31 +9,31 @@ As an enthusiastic traveler, I want a comprehensive weather forecast for various
 ## Features and Acceptance Criteria
 Travel Buddy offers an array of features to enhance your trip planning experience:
 
-### Interactive Navigation
+### 🌐 Interactive Navigation
 - Easily navigate through the app with the responsive navigation menu.
 
-### Home Page with Inviting Visuals
+### 🏡 Home Page with Inviting Visuals
 - Immerse yourself in the spirit of traveling with stunning images and welcoming texts on the home page.
 
-### About Section
+### ℹ️ About Section
 - Learn more about the Travel Buddy app and the pleasures of exploring the world.
 
-### Popular Destinations
+### 🌍 Popular Destinations
 - Get a glimpse of the most beautiful destinations worldwide, complete with enticing images and location details.
 
-### Explore the Paradises
+### 🏖️ Explore the Paradises
 - Discover the best paradises in the world through captivating images and heartwarming narratives.
 
-### Start Your Journey
+### 🚀 Start Your Journey
 - Begin your journey by filling out a form to create the perfect trip tailored to your preferences.
 
-### Weather Forecast
+### 🌦️ Weather Forecast
 - Access the latest weather forecast for your chosen locations to make informed travel decisions.
 
-### Currency Converter
+### 💰 Currency Converter
 - Empower your travels by staying informed with the latest currency insights. Convert any amount from one currency to another.
 
-### Footer with Useful Links
+### 📜 Footer with Useful Links
 - Navigate through various sections of the app and find relevant information in the footer.
 
 ## Instructions 📝
