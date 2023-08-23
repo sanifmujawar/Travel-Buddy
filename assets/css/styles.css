@@ -12,11 +12,9 @@
   --text-color-light: hsl(0, 0%, 60%);
   --body-color: hsl(0, 0%, 0%);
   --container-color: hsl(0, 0%, 8%);
-  --shadow-gradient: linear-gradient(
-    180deg,
-    hsla(0, 0%, 0%, 0) 50%,
-    hsl(0, 0%, 0%) 125%
-  );
+  --shadow-gradient: linear-gradient(180deg,
+      hsla(0, 0%, 0%, 0) 50%,
+      hsl(0, 0%, 0%) 125%);
 
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
@@ -127,7 +125,8 @@ img {
 }
 
 .main {
-  overflow: hidden; /* For animation ScrollReveal */
+  overflow: hidden;
+  /* For animation ScrollReveal */
 }
 
 /*=============== HEADER & NAV ===============*/
@@ -256,11 +255,9 @@ img {
   left: 0;
   width: 100%;
   height: 800px;
-  background: linear-gradient(
-    180deg,
-    hsla(0, 0%, 0%, 0) 58%,
-    hsl(0, 0%, 0%) 78%
-  );
+  background: linear-gradient(180deg,
+      hsla(0, 0%, 0%, 0) 58%,
+      hsl(0, 0%, 0%) 78%);
 }
 
 .home__container {
@@ -310,6 +307,7 @@ img {
   left: 0;
   background: var(--shadow-gradient);
 }
+
 .home__card-title {
   position: absolute;
   left: 1rem;
@@ -455,13 +453,11 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    180deg,
-    hsl(0, 0%, 0%) 5%,
-    hsla(0, 0%, 0%, 0) 40%,
-    hsla(0, 0%, 0%, 0) 60%,
-    hsl(0, 0%, 0%) 92%
-  );
+  background: linear-gradient(180deg,
+      hsl(0, 0%, 0%) 5%,
+      hsla(0, 0%, 0%, 0) 40%,
+      hsla(0, 0%, 0%, 0) 60%,
+      hsl(0, 0%, 0%) 92%);
 }
 
 .explore__content {
@@ -496,7 +492,7 @@ img {
 }
 
 
- .join__description {
+.join__description {
   margin-bottom: 2rem;
 }
 
@@ -520,18 +516,16 @@ img {
   justify-self: center;
   overflow: hidden;
   row-gap: 1rem;
-  
+
 }
 
 #output-container {
- 
+
   display: grid;
   row-gap: 1rem;
-  }
-
-.result_button {
-
 }
+
+.result_button {}
 
 .join__img {
   width: 300px;
@@ -546,6 +540,7 @@ img {
   height: 100%;
   background: var(--shadow-gradient);
 }
+
 .join__image:hover .join__img {
   transform: scale(1.2);
 }
@@ -555,8 +550,10 @@ img {
   row-gap: 3rem;
   padding-bottom: 2.5rem;
   display: grid;
-  grid-template-columns: 1fr 300px; /* Reverse the order */
-  align-items: center; /* Vertically align items */
+  grid-template-columns: 1fr 300px;
+  /* Reverse the order */
+  align-items: center;
+  /* Vertically align items */
 }
 
 .currency__data {
@@ -575,6 +572,7 @@ img {
 .currency__input {
   padding: 1.25rem 1rem;
   background-color: var(--container-color);
+  color: var(--title-color);
 }
 
 .currency__button {
@@ -600,6 +598,7 @@ img {
   height: 100%;
   background: var(--shadow-gradient);
 }
+
 .currency__image:hover .currency__img {
   transform: scale(1.2);
 }
@@ -707,7 +706,8 @@ img {
   color: var(--title-color);
   font-size: 1.25rem;
   backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px); /* For safari */
+  -webkit-backdrop-filter: blur(24px);
+  /* For safari */
   z-index: var(--z-tooltip);
   transition: bottom 0.4s, transform 0.4s;
 }
@@ -735,6 +735,7 @@ img {
 
 /* For medium devices */
 @media screen and (min-width: 576px) {
+
   .home__container,
   .about__container,
   .explore__content,
@@ -742,6 +743,7 @@ img {
     grid-template-columns: 380px;
     justify-content: center;
   }
+
   .currency__container {
     grid-template-columns: 380px;
     justify-content: center;
@@ -762,6 +764,7 @@ img {
     grid-template-columns: repeat(2, 350px);
     align-items: center;
   }
+
   .currency__container {
     grid-template-columns: repeat(2, 350px);
     align-items: center;
@@ -773,6 +776,7 @@ img {
   .join__data .section__title {
     text-align: initial;
   }
+
   .currency__data,
   .currency__data .section__title {
     text-align: initial;
@@ -785,9 +789,11 @@ img {
   .explore__img {
     width: 100vw;
   }
+
   .join__image {
     order: -1;
   }
+
   .currency__image {
     order: -1;
   }
@@ -796,10 +802,12 @@ img {
     grid-template-columns: repeat(2, max-content);
     justify-content: space-between;
   }
+
   .footer__group {
     flex-direction: row;
     justify-content: space-between;
   }
+
   .footer__copy {
     order: -1;
   }
@@ -807,10 +815,12 @@ img {
 
 /* For large devices */
 @media screen and (min-width: 1023px) {
+
   .nav__close,
   .nav__toggle {
     display: none;
   }
+
   .nav__list {
     flex-direction: row;
     column-gap: 4rem;
@@ -838,9 +848,11 @@ img {
   .nav {
     height: calc(var(--header-height) + 1.5rem);
   }
+
   .blur-header::after {
     backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px); /* For safari */
+    -webkit-backdrop-filter: blur(25px);
+    /* For safari */
   }
 
   .home__container {
@@ -849,22 +861,28 @@ img {
     row-gap: 4rem;
     padding-top: 6.5rem;
   }
+
   .home__shadow {
     height: 980px;
   }
+
   .home__data {
     text-align: initial;
     width: 480px;
   }
+
   .home__subtitle {
     font-size: var(--h2-font-size);
   }
+
   .home__description {
     margin-bottom: 2.5rem;
   }
+
   .home__cards {
     grid-template-columns: repeat(4, 260px);
   }
+
   .home__card-title {
     left: 1.5rem;
     bottom: 1.5rem;
@@ -879,9 +897,11 @@ img {
     column-gap: 8.5rem;
     padding-block: 1rem;
   }
+
   .about__description {
     margin-bottom: 3rem;
   }
+
   .about__img {
     width: 460px;
   }
@@ -891,9 +911,11 @@ img {
     column-gap: 3rem;
     padding-top: 4rem;
   }
+
   .popular__title {
     font-size: var(--h2-font-size);
   }
+
   .popular__location {
     font-size: var(--normal-font-size);
   }
@@ -901,10 +923,12 @@ img {
   .explore__img {
     height: 600px;
   }
+
   .explore__content {
     padding-top: 28rem;
     grid-template-columns: 670px 1fr;
   }
+
   .explore__data,
   .explore__data .section__title {
     text-align: initial;
@@ -921,9 +945,11 @@ img {
     column-gap: 8.5rem;
     padding-block: 1rem 5rem;
   }
+
   .join__img {
     width: 460px;
   }
+
   .join__description {
     margin-bottom: 3rem;
   }
@@ -933,9 +959,11 @@ img {
     column-gap: 8.5rem;
     padding-block: 1rem 5rem;
   }
+
   .currency__img {
     width: 460px;
   }
+
   .currency__description {
     margin-bottom: 3rem;
   }
@@ -943,15 +971,19 @@ img {
   .footer {
     padding-block: 5rem 3rem;
   }
+
   .footer__title {
     margin-bottom: 1.5rem;
   }
+
   .footer__group {
     margin-top: 7rem;
   }
+
   .footer__social {
     column-gap: 2rem;
   }
+
   .footer__social-link {
     font-size: 1.5rem;
   }
@@ -986,6 +1018,7 @@ img {
   border-radius: 10px;
   /* border: 1px solid red; */
 }
+
 .weather__temperature {
   font-size: 2rem;
   margin-bottom: 1rem;
