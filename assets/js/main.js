@@ -55,20 +55,24 @@ const sections = document.querySelectorAll("section[id]");
 const scrollActive = () => {
     const scrollY = window.pageYOffset;
 
-    // sections.forEach(current => {
-    //     const sectionHeight = current.offsetHeight,
-    //         sectionTop = current.offsetTop - 58,
-    //         sectionId = current.getAttribute('id'),
-    //         sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
+    sections.forEach(current => {
+        const sectionHeight = current.offsetHeight,
+            sectionTop = current.offsetTop - 58,
+            sectionId = current.getAttribute('id'),
+            sectionsClass = document.querySelector(`.nav__menu a[href="#${sectionId}"]`); // Updated selector format
 
-    //     if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-    //         sectionsClass.classList.add('active-link')
-    //     } else {
-    //         sectionsClass.classList.remove('active-link')
-    //     }
-    // })
+        if (sectionsClass) { // Check if the selector found an element
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                sectionsClass.classList.add('active-link');
+            } else {
+                sectionsClass.classList.remove('active-link');
+            }
+        }
+    });
 };
+
 window.addEventListener("scroll", scrollActive);
+
 
 /*=============== SCROLL REVEAL ANIMATION ===============*/
 const sr = ScrollReveal({
@@ -79,7 +83,7 @@ const sr = ScrollReveal({
     // reset: true // Animations repeat
 });
 
-sr.reveal(`.home__data, .explore__data, .explore__user, .footer__container`);
+sr.reveal(`.home__data, .explore__data, .explore__user, .weather__data, currency__data .footer__container`);
 sr.reveal(`.home__card`, { delay: 600, distance: "100px", interval: 100 });
 sr.reveal(`.about__data, .join__image, .currency__image, .weather__video`, {
     origin: "right",
