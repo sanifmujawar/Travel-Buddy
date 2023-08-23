@@ -136,8 +136,7 @@ form.addEventListener("submit", function travelInfo(event) {
             const weatherForecastLocation = document.getElementById(
                 "weatherForecastLocation"
             );
-            weatherForecastLocation.textContent = `Weather Forecast For, ${searchDestination} on ${searchDate} is!`;
-
+            
             dataOutput.appendChild(imgDiv);
             imgDiv.appendChild(newMap);
             //api to find data on requested venues/attractions
@@ -189,6 +188,10 @@ form.addEventListener("submit", function travelInfo(event) {
             var weatherIconImg = document.createElement("img");
             weatherIconImg.setAttribute("src", iconUrl);
             dataOutput.appendChild(weatherIconImg);
+
+            weatherForecastLocation.textContent = `Weather Forecast For ${searchDestination} on ${searchDate} is:`;
+    weatherForecastLocation.appendChild(weatherInfo);
+    weatherForecastLocation.appendChild(weatherIconImg);
         });
 });
 
