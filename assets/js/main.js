@@ -165,6 +165,28 @@ form.addEventListener("submit", function travelInfo(event) {
                     }
                 });
         });
+    // Fetch weather data
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchDestination}&units=metric&appid=b312a5f6b33bfedfd06f579030382318`)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function displayWeather(weatherData) {
+            console.log(weatherData);
+            var weatherDescription = weatherData.weather[0].description;
+            var temperature = weatherData.main.temp;
+            var weatherIcon = weatherData.weather[0].icon;
+
+            // Display weather information
+            var weatherInfo = document.createElement("p");
+            weatherInfo.textContent = `Weather: ${weatherDescription}, Temperature: ${temperature}°C`;
+            dataOutput.appendChild(weatherInfo);
+
+            // Display weather icon
+            var iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}.png`;
+            var weatherIconImg = document.createElement("img");
+            weatherIconImg.setAttribute("src", iconUrl);
+            dataOutput.appendChild(weatherIconImg);
+        });
 });
 
 form.addEventListener("click", function clearInfo() { });
