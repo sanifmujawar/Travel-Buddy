@@ -108,11 +108,14 @@ form.addEventListener("submit", function travelInfo(event) {
     var searchDate = dateInput.value;
     var searchAttraction = attractionInput.value;
 
-    console.log(searchName, "searchName");
-    console.log(searchEmail);
-    console.log(searchDestination);
-    console.log(searchAttraction);
-    console.log(searchDate);
+    localStorage.setItem("name", searchName);
+    localStorage.setItem("email", searchEmail);
+    localStorage.setItem("destination", searchDestination);
+    localStorage.setItem("date", searchDate);
+    localStorage.setItem("attraction", searchAttraction);
+
+    // console.log("Data stored in local storage");
+
     //api url to get location ID and longtitude/latitude
     var tripLocation = `https://api.geoapify.com/v1/geocode/search?text=${searchDestination}&lang=en&limit=10&type=city&apiKey=e4ecef705ece4451a30f714a57fb5101`;
     console.log(tripLocation);
