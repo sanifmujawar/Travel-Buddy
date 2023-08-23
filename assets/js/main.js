@@ -102,7 +102,7 @@ form.addEventListener("submit", function travelInfo(event) {
     var searchDate = dateInput.value;
     var searchAttraction = attractionInput.value;
 
-    console.log(searchName);
+    console.log(searchName, 'searchName');
     console.log(searchEmail);
     console.log(searchDestination);
     console.log(searchAttraction);
