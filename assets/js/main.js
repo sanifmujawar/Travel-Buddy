@@ -133,6 +133,8 @@ form.addEventListener("submit", function travelInfo(event) {
             //api to find data on requested venues/attractions
             var tripEvents = `https://api.geoapify.com/v2/places?categories=${searchAttraction}&filter=place:${locationID}&limit=30&apiKey=e4ecef705ece4451a30f714a57fb5101`;
             console.log(tripEvents);
+            const weatherForecastLocation = document.getElementById("weatherForecastLocation");
+            weatherForecastLocation.textContent = `Hello, ${searchDestination},${searchDate}!`
 
             fetch(tripEvents)
                 .then(function (response) {
