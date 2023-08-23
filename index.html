@@ -146,7 +146,7 @@
          <h2 class="section__title">
             Enjoy The Beauty <br>
             Of The World
-        </h2>
+         </h2>
 
          <div class="popular__container container grid">
             <article class="popular__card">
@@ -240,6 +240,7 @@
                   Starts Here
                </h2>
 
+
                <p class="join__description">
                   Hi! Please fill out the form below and let's create the perfect trip.
                </p>
@@ -250,7 +251,7 @@
                   <input type="text" id="destination" placeholder="Enter your destination" class="join__input">
                   <input type="email" placeholder="Enter your email" class="join__input">
                   <p>What attractions are you interested in?:</p>
-                  <select type="text" class="join__input" id="attractions">
+                  <select type="text" class="currency__input" id="attractions">
                      <option class="attr-option" value="catering.cafe.coffee">
                         Cafe
                      </option>
@@ -330,18 +331,33 @@
                   Currency <br>
                   Converter
                </h2>
+               kkk
+               <div id="weatherForecastLocation"></div>
+
 
                <p class="currency__description">
                   Empower Your Travels:
                   Stay Informed with Our Latest Currency Insights!
+                  convert any amount from one currency to another
                </p>
 
-               <form action="" class="currency__form">
-                  <input type="email" placeholder="Enter your email" class="currency__input">
+               <form action="" id="currencyConverterForm" class="currency__form">
+                  <input type="number" placeholder="Enter your amount" id="amountInput" class="currency__input">
+                  <select id="fromCurrencySelect" name="fromCurrency" placeholder="Select your preferred currency"
+                     class="currency__input">
+                     <option value="" disabled selected>Select currency</option>
+                  </select>
+                  to
+                  <select id="toCurrencySelect" name="toCurrency" placeholder="Select your target currency"
+                     class="currency__input">
+                     <option value="" disabled selected>Select currency</option>
+                  </select>
 
-                  <button class="currency__button button">
-                     Subscribe Our Newsletter <i class="ri-arrow-right-line"></i>
+                  <button id="convertBtn" class="currency__button button">
+                     Convert your currency
                   </button>
+
+                  <div id="resultDiv"> </div>
                </form>
             </div>
 
@@ -477,5 +493,8 @@
 
    <!--=============== MAIN JS ===============-->
    <script src="assets/js/main.js"></script>
+   <!--=============== CURRENCY JS ===============-->
+   <script src="assets/js/currency.js"></script>
 </body>
+
 </html>
