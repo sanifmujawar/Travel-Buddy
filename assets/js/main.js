@@ -105,16 +105,20 @@ var emailInput = document.getElementById("email");
 var destinationInput = document.getElementById("destination");
 var attractionInput = document.getElementById("attractions");
 var dateInput = document.getElementById("date-selector");
-var dataOutput = document.getElementById("output-container");
+var storedResults = document.getElementById("stored-results");
 
 //event listener and function to store user input data
 form.addEventListener("submit", function travelInfo(event) {
   event.preventDefault();
+  results.innerHTML = "";
   var searchName = nameInput.value;
   var searchEmail = emailInput.value;
   var searchDestination = destinationInput.value;
   var searchDate = dateInput.value;
   var searchAttraction = attractionInput.value;
+
+  var resultDate = document.createTextNode(searchDate);
+  storedResults.appendChild(resultDate);
 
   localStorage.setItem("name", searchName);
   localStorage.setItem("email", searchEmail);
@@ -126,7 +130,7 @@ form.addEventListener("submit", function travelInfo(event) {
 
   //api url to get location ID and longtitude/latitude
   var tripLocation = `https://api.geoapify.com/v1/geocode/search?text=${searchDestination}&lang=en&limit=10&type=city&apiKey=e4ecef705ece4451a30f714a57fb5101`;
-  console.log(tripLocation);
+  // console.log(tripLocation);
   //fetch function
   fetch(tripLocation)
     .then(function (response) {
@@ -139,7 +143,7 @@ form.addEventListener("submit", function travelInfo(event) {
       //api to generate static map from data from previous api
       var locationMap = `https://maps.geoapify.com/v1/staticmap?style=osm-bright&width=800&height=600&format=jpeg&center=lonlat:${locationLon},${locationLat}&zoom=13.5&apiKey=e4ecef705ece4451a30f714a57fb5101`;
       //creating img element and appending to new div
-      console.log(locationMap);
+      // console.log(locationMap);
       var imgDiv = document.createElement("div");
       var newMap = document.createElement("img");
       newMap.setAttribute("src", locationMap);
@@ -148,11 +152,11 @@ form.addEventListener("submit", function travelInfo(event) {
         "weatherForecastLocation"
       );
 
-      dataOutput.appendChild(imgDiv);
+      results.appendChild(imgDiv);
       imgDiv.appendChild(newMap);
       //api to find data on requested venues/attractions
       var tripEvents = `https://api.geoapify.com/v2/places?categories=${searchAttraction}&filter=place:${locationID}&limit=30&apiKey=e4ecef705ece4451a30f714a57fb5101`;
-      console.log(tripEvents);
+      // console.log(tripEvents);
 
       fetch(tripEvents)
         .then(function (response) {
@@ -163,15 +167,27 @@ form.addEventListener("submit", function travelInfo(event) {
           for (let j = 0; j < data.features.length; j++) {
             var resultsName = data.features[j].properties.name;
 
-            // var newDiv = document.createElement("div");
-            // newDiv.classList.add("result-div");
-            var newAddressButton = document.createElement("button");
-            newAddressButton.classList.add("result-button");
+            // var resultsOpen =
+            //   data.features[j].properties.datasource.raw.opening_hours;
+            // var resultsPhone = data.features[j].properties.datasource.raw.phone;
+            // var resultsWeb = data.features[j].properties.datasource.raw.url;
+            var newAddressDiv = document.createElement("button");
+            newAddressDiv.classList.add("result-button", "button");
             var newTextAddress = document.createTextNode(resultsName);
 
-            // dataOutput.appendChild(newDiv);
-            dataOutput.appendChild(newAddressButton);
-            newAddressButton.appendChild(newTextAddress);
+            results.appendChild(newAddressDiv);
+            newAddressDiv.appendChild(newTextAddress);
+            newAddressDiv.addEventListener("click", function storeInfo() {
+              var storedData = document.createElement("div");
+              storedData.classList.add("section");
+              var resultsOpen = data.features[j].properties.formatted;
+              var resultsPhone =
+                data.features[j].properties.datasource.raw.phone;
+              var newTextOpen = document.createTextNode(resultsOpen);
+              var newTextPhone = document.createTextNode(resultsPhone);
+              storedResults.appendChild(storedData);
+              storedData.appendChild(newTextOpen);
+            });
           }
         });
     });
@@ -184,7 +200,7 @@ form.addEventListener("submit", function travelInfo(event) {
       return response.json();
     })
     .then(function displayWeather(weatherData) {
-      console.log(weatherData);
+      // console.log(weatherData);
       var weatherDescription = weatherData.weather[0].description;
       var temperature = weatherData.main.temp;
       var weatherIcon = weatherData.weather[0].icon;
@@ -192,13 +208,13 @@ form.addEventListener("submit", function travelInfo(event) {
       // Display weather information
       var weatherInfo = document.createElement("p");
       weatherInfo.textContent = `Weather: ${weatherDescription}, Temperature: ${temperature}°C`;
-      dataOutput.appendChild(weatherInfo);
+      results.appendChild(weatherInfo);
 
       // Display weather icon
       var iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}.png`;
       var weatherIconImg = document.createElement("img");
       weatherIconImg.setAttribute("src", iconUrl);
-      dataOutput.appendChild(weatherIconImg);
+      results.appendChild(weatherIconImg);
 
       weatherForecastLocation.textContent = `Weather Forecast For ${searchDestination} on ${searchDate} is:`;
       weatherForecastLocation.appendChild(weatherInfo);
