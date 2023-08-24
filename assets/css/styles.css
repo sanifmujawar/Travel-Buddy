@@ -1041,3 +1041,7 @@ img {
 .d-inline {
   display: inline-flex;
 }
+
+#attractions{
+  color:white;
+}
