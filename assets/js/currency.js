@@ -1,8 +1,8 @@
 // Fetch available currency symbols and names
-const symbolsURL = 'https://api.exchangerate.host/symbols';
+const symbolsURL = "https://api.exchangerate.host/symbols";
 fetch(symbolsURL)
-  .then(response => response.json())
-  .then(data => {
+  .then((response) => response.json())
+  .then((data) => {
     const currencies = data.symbols;
 
     // This is showing the different currency options
@@ -14,14 +14,13 @@ fetch(symbolsURL)
     }
 
     // Setting the default values on selected currency
-    fromCurrencySelect.value = 'GBP';
-    toCurrencySelect.value = 'USD';
+    fromCurrencySelect.value = "GBP";
+    toCurrencySelect.value = "USD";
   });
 
-
 // When form is submitted it will show the new currency
-const currencyConverterForm = document.getElementById('currencyConverterForm');
-currencyConverterForm.addEventListener('submit', function (event) {
+const currencyConverterForm = document.getElementById("currencyConverterForm");
+currencyConverterForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
   const amount = parseFloat(amountInput.value);
@@ -31,8 +30,8 @@ currencyConverterForm.addEventListener('submit', function (event) {
   const queryURL = `https://api.exchangerate.host/convert?from=${fromCurrency}&to=${toCurrency}`;
 
   fetch(queryURL)
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       const exchangeRate = data.result;
       const convertedAmount = (amount * exchangeRate).toFixed(2);
 
