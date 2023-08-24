@@ -118,7 +118,7 @@ form.addEventListener("submit", function travelInfo(event) {
   var searchAttraction = attractionInput.value;
 
   var resultDate = document.createTextNode(searchDate);
-  storedResults.appendChild(resultDate);
+  results.appendChild(resultDate);
 
   localStorage.setItem("name", searchName);
   localStorage.setItem("email", searchEmail);
@@ -164,29 +164,42 @@ form.addEventListener("submit", function travelInfo(event) {
         })
         .then(function (data) {
           results.innerHTML = "";
-          for (let j = 0; j < data.features.length; j++) {
-            var resultsName = data.features[j].properties.name;
 
-            // var resultsOpen =
-            //   data.features[j].properties.datasource.raw.opening_hours;
-            // var resultsPhone = data.features[j].properties.datasource.raw.phone;
-            // var resultsWeb = data.features[j].properties.datasource.raw.url;
+          // Filter out attractions with undefined names
+          const attractions = data.features.filter(
+            (feature) => feature.properties.name !== undefined
+          );
+
+          for (let j = 0; j < attractions.length; j++) {
+            var resultsName = attractions[j].properties.name;
+
             var newAddressDiv = document.createElement("button");
             newAddressDiv.classList.add("result-button", "button");
             var newTextAddress = document.createTextNode(resultsName);
 
             results.appendChild(newAddressDiv);
             newAddressDiv.appendChild(newTextAddress);
+
             newAddressDiv.addEventListener("click", function storeInfo() {
               var storedData = document.createElement("div");
               storedData.classList.add("section");
-              var resultsOpen = data.features[j].properties.formatted;
-              var resultsPhone =
-                data.features[j].properties.datasource.raw.phone;
-              var newTextOpen = document.createTextNode(resultsOpen);
-              var newTextPhone = document.createTextNode(resultsPhone);
-              storedResults.appendChild(storedData);
-              storedData.appendChild(newTextOpen);
+
+              // Check if the attraction has valid formatted and phone properties
+              if (
+                attractions[j].properties.formatted !== undefined &&
+                attractions[j].properties.datasource.raw.phone !== undefined
+              ) {
+                var resultsOpen = attractions[j].properties.formatted;
+                var resultsPhone =
+                  attractions[j].properties.datasource.raw.phone;
+
+                var newTextOpen = document.createTextNode(resultsOpen);
+                var newTextPhone = document.createTextNode(resultsPhone);
+
+                storedData.appendChild(newTextOpen);
+                storedData.appendChild(newTextPhone);
+                storedResults.appendChild(storedData);
+              }
             });
           }
         });
