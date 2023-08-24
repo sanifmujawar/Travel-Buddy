@@ -1037,3 +1037,7 @@ img {
   font-size: var(--small-font-size);
   color: var(--text-color);
 }
+
+.d-inline {
+  display: inline-flex;
+}
