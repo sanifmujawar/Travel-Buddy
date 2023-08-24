@@ -328,6 +328,7 @@ img {
 .button {
   background-color: hsla(0, 0%, 100%, 0.2);
   padding: 1.25rem 1.5rem;
+  margin-top: 1rem;
   color: var(--title-color);
   display: inline-flex;
   align-items: center;
